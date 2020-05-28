@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Tilesets/Tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://Entities/Areas/PurpleArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Areas/PlayArea.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Areas/GreenArea.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Finish/Finish.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/PlayerSpawn/PlayerSpawn.tscn" type="PackedScene" id=6]
+
+[node name="UpAndDownMap" type="TileMap"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 196618, 3, 0, 196619, 3, 0, 196620, 3, 0, 262154, 3, 0, 262155, 3, 0, 262156, 3, 0, 327690, 3, 0, 327691, 3, 0, 327692, 3, 0, 393226, 3, 0, 393227, 3, 0, 393228, 3, 0, 458752, 3, 0, 458753, 3, 0, 458754, 3, 0, 458762, 3, 0, 458763, 3, 0, 458764, 3, 0, 524288, 3, 0, 524289, 3, 0, 524290, 3, 0, 524298, 3, 0, 524299, 3, 0, 524300, 3, 0 )
+
+[node name="GreenArea" parent="." instance=ExtResource( 4 )]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GreenArea"]
+position = Vector2( -32, 96 )
+polygon = PoolVector2Array( 96, 64, 160, 64, 160, 128, 96, 128 )
+
+[node name="PurpleArea" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PurpleArea"]
+position = Vector2( -32, 0 )
+polygon = PoolVector2Array( 160, 160, 208, 160, 208, 224, 160, 224 )
+
+[node name="PurpleArea2" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PurpleArea2"]
+position = Vector2( 32, -64 )
+polygon = PoolVector2Array( 208, 96, 256, 96, 256, 192, 208, 192 )
+
+[node name="PlayerSpawn" parent="." instance=ExtResource( 6 )]
+position = Vector2( 48, 208 )
+
+[node name="PlayArea" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="Finish" parent="." instance=ExtResource( 5 )]
+position = Vector2( 368, 80 )
